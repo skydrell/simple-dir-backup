@@ -46,7 +46,7 @@ namespace simple_dir_backup
         {
             if (backupBtn.Text == "BACKUP")
             {
-                if (sourcePath == null || destPath == null)
+                if (sourcePath == null || sourcePath == "" || destPath == null || destPath == "")
                 {
                     MessageBox.Show("Source path and/or destination path is empty");
                 }

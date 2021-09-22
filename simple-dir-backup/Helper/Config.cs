@@ -12,7 +12,7 @@ namespace simple_dir_backup
 
         public Config()
         {
-            try
+            /*try
             {
                 string[] configFileContent = File.ReadAllLines("config");
                 lastSourcePath = configFileContent[0];
@@ -21,10 +21,17 @@ namespace simple_dir_backup
             {
                 string[] a = { "", "" };
                 File.WriteAllLines("config", a);
-            }
+            }*/
+            readConfig();
         }
 
-        public void saveConfig(string source, string dest)
+        public void readConfig()
+        {
+            this.lastSourcePath = Properties.Settings.Default.source;
+            this.lastDestPath = Properties.Settings.Default.destination;
+        }
+
+        public void saveConfigOld(string source, string dest)
         {
             try
             {
@@ -34,6 +41,13 @@ namespace simple_dir_backup
             {
                 System.Windows.Forms.MessageBox.Show("Failed to write to file");
             }
+        }
+
+        public void saveConfig(string source, string destination)
+        {
+            Properties.Settings.Default.source = source;
+            Properties.Settings.Default.destination = destination;
+            Properties.Settings.Default.Save();
         }
     }
 }
