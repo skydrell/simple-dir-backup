@@ -46,6 +46,8 @@ namespace simple_dir_backup
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.aboutMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -105,7 +107,7 @@ namespace simple_dir_backup
             // 
             // backupBtn
             // 
-            this.backupBtn.Location = new System.Drawing.Point(480, 148);
+            this.backupBtn.Location = new System.Drawing.Point(480, 165);
             this.backupBtn.Name = "backupBtn";
             this.backupBtn.Size = new System.Drawing.Size(128, 47);
             this.backupBtn.TabIndex = 3;
@@ -135,7 +137,7 @@ namespace simple_dir_backup
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 148);
+            this.progressBar1.Location = new System.Drawing.Point(12, 165);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(462, 47);
             this.progressBar1.TabIndex = 7;
@@ -158,11 +160,33 @@ namespace simple_dir_backup
             this.aboutMenu.Text = "About";
             this.aboutMenu.Click += new System.EventHandler(this.aboutMenu_clicked);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Directory",
+            "Content"});
+            this.comboBox1.Location = new System.Drawing.Point(115, 125);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(180, 28);
+            this.comboBox1.TabIndex = 10;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 128);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(93, 20);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Item to copy";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(620, 207);
+            this.ClientSize = new System.Drawing.Size(620, 223);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.statusLbl);
             this.Controls.Add(this.infoLbl);
@@ -171,6 +195,7 @@ namespace simple_dir_backup
             this.Controls.Add(this.sourceBrowseBtn);
             this.Controls.Add(this.destTxt);
             this.Controls.Add(this.sourceTxt);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
@@ -206,6 +231,8 @@ namespace simple_dir_backup
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem aboutMenu;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label3;
     }
 }
 

@@ -26,6 +26,7 @@ namespace simple_dir_backup
             destPath = config.lastDestPath;
             sourceTxt.Text = sourcePath;
             destTxt.Text = destPath;
+            comboBox1.SelectedIndex = 0;
         }
 
         private void sourceBrowseBtn_Click(object sender, EventArgs e)
@@ -52,8 +53,11 @@ namespace simple_dir_backup
                 }
                 else
                 {
+                    int copyMode = comboBox1.SelectedIndex;
                     backupBtn.Text = "ABORT";
-                    td = new Thread(new ThreadStart(backup2));
+                    td = new Thread(new ThreadStart(() => {
+                        backup2(copyMode); 
+                    }));
                     this.isBackuping = true;
                     td.Start();
                     timer1.Enabled = true;
@@ -149,6 +153,14 @@ namespace simple_dir_backup
                 string message = $"{newfile} new files and {modifiedFile} modified files copied.";
                 backupBtn.Text = "DONE";
                 endMessage("finished");
+                progressBar1.Value = 0;
+                statusLbl.Text = "";
+                progress = 0;
+                isBackuping = false;
+                newfile = 0;
+                modifiedFile = 0;
+                td = null;
+                backupBtn.Text = "BACKUP";
             }
             if (statusLbl.Text != "Backup in progress" && isBackuping)
             {
@@ -165,6 +177,7 @@ namespace simple_dir_backup
                     break;
                 case "finished":
                     MessageBox.Show($"{newfile} new file(s) and {modifiedFile} modified file(s) copied","Backup Finished", MessageBoxButtons.OK);
+
                     break;
             }
         }
@@ -181,7 +194,7 @@ namespace simple_dir_backup
         }
 
 
-        private void backup2()
+        private void backup2(int copyMode)      // copyMode => 0=Directory, 1=Content
         {
             int newFile = 0;
             int modifiedFile = 0;
@@ -191,14 +204,18 @@ namespace simple_dir_backup
             DirectoryInfo sourceFolder = new DirectoryInfo(sourcePath);
             foreach (var file in sourceFilesPath)
             {
-                if (!isBackuping)
+                string destFilePath;
+                if (copyMode == 0)
                 {
-                    this.newfile = 0;
-                    this.modifiedFile = 0;
-                    fileDone = 0;
-                    this.progress = 0;
+                    destFilePath = destPath + "\\" + file.Substring(sourcePath.LastIndexOf("\\") + 1);
+                } else if (copyMode == 1)
+                {
+                    destFilePath = destPath + "\\" + file.Substring(sourcePath.Length + 1);
+                } else
+                {
+                    throw new Exception("invalid copy mode");
                 }
-                string destFilePath = destPath + "\\" + file.Substring(sourcePath.Length + 1);
+
                 if (sourceFolder.Root.ToString() == sourceFolder.Name)
                 {
                     destFilePath = destPath + "\\" + file.Substring(2);
