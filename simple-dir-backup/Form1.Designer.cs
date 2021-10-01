@@ -107,7 +107,7 @@ namespace simple_dir_backup
             // 
             // backupBtn
             // 
-            this.backupBtn.Location = new System.Drawing.Point(480, 165);
+            this.backupBtn.Location = new System.Drawing.Point(481, 199);
             this.backupBtn.Name = "backupBtn";
             this.backupBtn.Size = new System.Drawing.Size(128, 47);
             this.backupBtn.TabIndex = 3;
@@ -126,7 +126,7 @@ namespace simple_dir_backup
             // statusLbl
             // 
             this.statusLbl.AutoSize = true;
-            this.statusLbl.Location = new System.Drawing.Point(13, 125);
+            this.statusLbl.Location = new System.Drawing.Point(22, 165);
             this.statusLbl.Name = "statusLbl";
             this.statusLbl.Size = new System.Drawing.Size(0, 20);
             this.statusLbl.TabIndex = 6;
@@ -137,7 +137,7 @@ namespace simple_dir_backup
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 165);
+            this.progressBar1.Location = new System.Drawing.Point(13, 199);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(462, 47);
             this.progressBar1.TabIndex = 7;
@@ -185,7 +185,7 @@ namespace simple_dir_backup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(620, 223);
+            this.ClientSize = new System.Drawing.Size(620, 258);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.statusLbl);

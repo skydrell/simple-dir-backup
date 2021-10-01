@@ -23,10 +23,11 @@ namespace simple_dir_backup
             InitializeComponent();
             config = new Config();
             sourcePath = config.lastSourcePath;
+            comboBox1.SelectedIndex = (int)config.copyMode;
             destPath = config.lastDestPath;
+            
             sourceTxt.Text = sourcePath;
             destTxt.Text = destPath;
-            comboBox1.SelectedIndex = 0;
         }
 
         private void sourceBrowseBtn_Click(object sender, EventArgs e)
@@ -190,7 +191,7 @@ namespace simple_dir_backup
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             isBackuping = false; //this will make the thread finishes their job
-            config.saveConfig(sourcePath, destPath);
+            config.saveConfig(sourcePath, destPath, (byte) comboBox1.SelectedIndex);
         }
 
 

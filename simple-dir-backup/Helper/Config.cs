@@ -9,6 +9,7 @@ namespace simple_dir_backup
     {
         public string lastSourcePath;
         public string lastDestPath;
+        public byte copyMode;
 
         public Config()
         {
@@ -29,6 +30,7 @@ namespace simple_dir_backup
         {
             this.lastSourcePath = Properties.Settings.Default.source;
             this.lastDestPath = Properties.Settings.Default.destination;
+            this.copyMode = Properties.Settings.Default.copyMode;
         }
 
         public void saveConfigOld(string source, string dest)
@@ -43,10 +45,11 @@ namespace simple_dir_backup
             }
         }
 
-        public void saveConfig(string source, string destination)
+        public void saveConfig(string source, string destination, byte copyMode)
         {
             Properties.Settings.Default.source = source;
             Properties.Settings.Default.destination = destination;
+            Properties.Settings.Default.copyMode = copyMode;
             Properties.Settings.Default.Save();
         }
     }
